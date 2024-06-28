@@ -4,7 +4,8 @@ import {
     NavbarBrand,
     NavbarContent,
     NavbarItem,
-    Button
+    Button,
+    Link
 } from "@nextui-org/react";
 import Logo from "./logo";
 
@@ -24,9 +25,11 @@ export default function Navbar() {
             <NavbarContent justify="end">
                 <NavbarItem>
                     <Button
+                        as={Link}
                         color="success"
                         className="min-w-[105px]"
                         radius="sm"
+                        href="/signin"
                     >
                         Sign In
                     </Button>
