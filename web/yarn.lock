@@ -940,7 +940,7 @@
     "@react-types/tabs" "3.3.7"
     scroll-into-view-if-needed "3.0.10"
 
-"@nextui-org/theme@2.2.6":
+"@nextui-org/theme@2.2.6", "@nextui-org/theme@^2.2.6":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@nextui-org/theme/-/theme-2.2.6.tgz#57f8fca6c2fddaf72df3c92e0e9befbd4a5a3002"
   integrity sha512-FyDp5edpmjbvPzRx+D2+Km1oZ73wQOzKMSBPomOgP0h9OFnnTHqKlmtbGhWSk2cEyYN9VsaGvqJTw8X35/aChQ==
