@@ -1,7 +1,8 @@
 import type {Config} from "tailwindcss";
 import {nextui} from "@nextui-org/react";
+import {themeConfig} from "./theme-config";
 
-const config: Config = {
+const config = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,11 +12,11 @@ const config: Config = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["var(--font-sans)"],
                 brand: ["var(--font-brand)"]
             }
         }
     },
-    plugins: [nextui()]
-};
+    darkMode: "class",
+    plugins: [nextui(themeConfig)]
+} satisfies Config;
 export default config;
