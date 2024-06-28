@@ -13,6 +13,12 @@ const config = {
         extend: {
             fontFamily: {
                 brand: ["var(--font-brand)"]
+            },
+            borderRadius: {
+                "4xl": "2rem"
+            },
+            fontSize: {
+                "2.5xl": "1.75rem"
             }
         }
     },
