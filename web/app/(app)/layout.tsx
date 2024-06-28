@@ -1,6 +1,6 @@
 "use client";
 
-import Topbar from "@/components/Topbar";
+import Topbar from "@/components/topbar";
 import {useSession} from "next-auth/react";
 import * as React from "react";
 

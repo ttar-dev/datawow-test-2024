@@ -3,7 +3,7 @@ import type {Metadata} from "next";
 import "./globals.css";
 
 import AuthProvider from "@/contexts/SessionProvider";
-import {fontBranded} from "@/utils/fonts";
+import {fontBranded, fontForms} from "@/utils/fonts";
 import UIProvider from "@/contexts/UIProvider";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${fontBranded.variable}`}>
+            <body className={`${fontBranded.variable} ${fontForms.variable}`}>
                 <AuthProvider>
                     <UIProvider>{children}</UIProvider>
                 </AuthProvider>
