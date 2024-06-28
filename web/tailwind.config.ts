@@ -12,13 +12,20 @@ const config = {
     theme: {
         extend: {
             fontFamily: {
-                brand: ["var(--font-brand)"]
+                brand: ["var(--font-brand)"],
+                forms: ["var(--font-forms)"]
             },
             borderRadius: {
                 "4xl": "2rem"
             },
             fontSize: {
                 "2.5xl": "1.75rem"
+            },
+            height: {
+                input: "2.75"
+            },
+            width: {
+                login: "384px"
             }
         }
     },
