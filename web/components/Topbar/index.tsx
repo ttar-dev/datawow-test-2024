@@ -27,7 +27,7 @@ export default function Navbar() {
                     <Button
                         as={Link}
                         color="success"
-                        className="min-w-[105px]"
+                        className="min-w-[105px] font-forms"
                         radius="sm"
                         href="/signin"
                     >
