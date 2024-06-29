@@ -6,17 +6,18 @@ import {
     NavbarContent,
     NavbarItem,
     Button,
-    Link
+    Link,
+    Avatar
 } from "@nextui-org/react";
 import Logo from "./logo";
 import {useSession} from "next-auth/react";
 
 export default function Navbar() {
-    const session = useSession();
+    const {data: session, status} = useSession();
     return (
         <NXNavbar
             classNames={{
-                base: "bg-content1"
+                base: "bg-content1 fixed top-0 z-50"
             }}
             maxWidth="full"
             height={"60px"}
@@ -27,19 +28,24 @@ export default function Navbar() {
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    {session.status !== "authenticated" ? (
+                    {status !== "authenticated" ? (
                         <Button
                             as={Link}
                             color="success"
                             className="min-w-[105px] font-forms"
                             radius="sm"
                             href="/signin"
-                            isLoading={session.status === "loading"}
+                            isLoading={status === "loading"}
                         >
                             Sign In
                         </Button>
                     ) : (
-                        <></>
+                        <div className="text-primary-foreground flex items-center gap-4">
+                            <span className="text-base">
+                                {session?.user?.name}
+                            </span>
+                            <Avatar src={session?.user?.image as string} />
+                        </div>
                     )}
                 </NavbarItem>
             </NavbarContent>

@@ -25,7 +25,8 @@ const authOptions: NextAuthOptions = {
                 const user = {
                     id: "1",
                     name: "John Doe",
-                    email: "johndoe@example.com"
+                    email: "johndoe@example.com",
+                    image: "https://i.pravatar.cc/300"
                 };
 
                 return user;
