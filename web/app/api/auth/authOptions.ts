@@ -4,7 +4,7 @@ import _ from "lodash";
 
 const authOptions: NextAuthOptions = {
     pages: {
-        signIn: "/login",
+        signIn: "/signin",
         signOut: "/"
     },
     debug: true,
@@ -16,14 +16,10 @@ const authOptions: NextAuthOptions = {
         CredentialsProvider({
             name: "Credentials",
             credentials: {
-                username: {label: "Username", type: "text"},
-                password: {label: "Password", type: "password"}
+                username: {label: "Username", type: "text"}
             },
-            async authorize(credentials, req) {
-                if (
-                    credentials?.username !== "johndoe@example.com" &&
-                    credentials?.password !== "P@ss0wrd"
-                ) {
+            async authorize(credentials: any) {
+                if (credentials?.username !== "johndoe") {
                     return null;
                 }
                 const user = {

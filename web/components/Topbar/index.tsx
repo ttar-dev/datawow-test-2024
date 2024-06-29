@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
     Navbar as NXNavbar,
@@ -8,8 +9,10 @@ import {
     Link
 } from "@nextui-org/react";
 import Logo from "./logo";
+import {useSession} from "next-auth/react";
 
 export default function Navbar() {
+    const session = useSession();
     return (
         <NXNavbar
             classNames={{
@@ -24,15 +27,20 @@ export default function Navbar() {
 
             <NavbarContent justify="end">
                 <NavbarItem>
-                    <Button
-                        as={Link}
-                        color="success"
-                        className="min-w-[105px] font-forms"
-                        radius="sm"
-                        href="/signin"
-                    >
-                        Sign In
-                    </Button>
+                    {session.status !== "authenticated" ? (
+                        <Button
+                            as={Link}
+                            color="success"
+                            className="min-w-[105px] font-forms"
+                            radius="sm"
+                            href="/signin"
+                            isLoading={session.status === "loading"}
+                        >
+                            Sign In
+                        </Button>
+                    ) : (
+                        <></>
+                    )}
                 </NavbarItem>
             </NavbarContent>
         </NXNavbar>
