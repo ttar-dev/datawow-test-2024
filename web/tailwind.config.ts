@@ -19,6 +19,7 @@ const config = {
                 "4xl": "2rem"
             },
             fontSize: {
+                xxs: ".625rem",
                 "2.5xl": "1.75rem"
             },
             height: {
