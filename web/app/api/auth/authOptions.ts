@@ -21,7 +21,7 @@ const authOptions: NextAuthOptions = {
             },
             async authorize(credentials: any) {
                 const {data} = await axios.post(
-                    process.env.NEXT_PUBLIC_API_URL + "/auth/signin",
+                    process.env.API_URL + "/auth/signin",
                     {
                         username: credentials.username
                     }

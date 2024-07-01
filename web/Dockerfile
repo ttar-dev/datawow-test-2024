@@ -10,7 +10,7 @@ WORKDIR /app
 COPY --from=build --chown=appuser:appgroup /app /app
 COPY --chown=appuser:appgroup . .
 
-ENV NEXT_PUBLIC_API_URL=http://api:4200
+ENV API_URL=http://api:4000
 
 RUN yarn build
 EXPOSE 3000
