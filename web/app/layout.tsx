@@ -5,6 +5,7 @@ import "./globals.css";
 import AuthProvider from "@/contexts/SessionProvider";
 import {fontBranded, fontForms} from "@/utils/fonts";
 import UIProvider from "@/contexts/UIProvider";
+import {ReduxProvider} from "@/contexts/ReduxProvider";
 
 export const metadata: Metadata = {
     title: {
@@ -24,7 +25,9 @@ export default function RootLayout({
                 className={`${fontBranded.variable} ${fontForms.variable} w-full`}
             >
                 <AuthProvider>
-                    <UIProvider>{children}</UIProvider>
+                    <ReduxProvider>
+                        <UIProvider>{children}</UIProvider>
+                    </ReduxProvider>
                 </AuthProvider>
             </body>
         </html>
