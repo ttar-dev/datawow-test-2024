@@ -75,7 +75,7 @@ export default function Home() {
                                 </Chip>
                             </div>
                             <div className="space-y-1">
-                                <h6 className="font-base font-semibold">
+                                <h6 className="font-base font-semibold truncate">
                                     Lorem ipsum dolor sit, amet consectetur
                                 </h6>
                                 <span className="text-xs line-clamp-2">
