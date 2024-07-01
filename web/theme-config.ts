@@ -44,6 +44,11 @@ export const themeConfig = <NextUIPluginConfig>{
                     DEFAULT: "#243831",
                     foreground: colors.white
                 },
+                grey: {
+                    DEFAULT: colors.grey[300],
+                    foreground: colors.text,
+                    ...colors.grey
+                },
                 background: {
                     DEFAULT: colors.grey[100],
                     foreground: colors.text

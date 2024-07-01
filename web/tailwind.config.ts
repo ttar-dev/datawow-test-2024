@@ -23,7 +23,8 @@ const config = {
                 "2.5xl": "1.75rem"
             },
             height: {
-                input: "2.75"
+                input: "2.75rem",
+                button: "2.5rem"
             },
             width: {
                 login: "384px"
