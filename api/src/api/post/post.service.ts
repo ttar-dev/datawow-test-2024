@@ -49,4 +49,8 @@ export class PostService {
   }) {
     return await this.mgPost.create(createValues);
   }
+
+  async deleteByPostID(query: { post_id?: string; author_id?: string }) {
+    return await this.mgPost.findOneAndDelete(query);
+  }
 }

@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -57,6 +58,19 @@ export class PostController {
       title,
       content,
       community,
+      author_id: user.uid,
+    });
+  }
+
+  @ApiBearerAuth('Access Token')
+  @UseGuards(AuthGuard)
+  @Delete(':post_id')
+  async deletePost(
+    @Req() { user }: { user: any },
+    @Param('post_id') post_id: string,
+  ) {
+    return await this.postService.deleteByPostID({
+      post_id,
       author_id: user.uid,
     });
   }

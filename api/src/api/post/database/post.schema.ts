@@ -13,7 +13,7 @@ export class Post {
   author_id: string;
 
   @Prop()
-  community: string;
+  community: string; // Array
 
   @Prop({ max: 120 })
   title: string;
