@@ -2,6 +2,7 @@
 
 import Input from "@/components/forms/input";
 import Select from "@/components/forms/select";
+import useGet from "@/hooks/useGet";
 import {Avatar, Button, Chip} from "@nextui-org/react";
 import {useSession} from "next-auth/react";
 import {FormProvider, useForm} from "react-hook-form";
@@ -10,6 +11,8 @@ import {TbMessageCircle} from "react-icons/tb";
 
 export default function Home() {
     const {data: session} = useSession();
+
+    const {data: posts} = useGet("/posts");
 
     const options = [
         {key: "cat", label: "Cat"},
@@ -58,7 +61,7 @@ export default function Home() {
             </FormProvider>
             <div className="py-6">
                 <div className="bg-white rounded-xl divide-y-1">
-                    {[1, 2, 3].map((item: number) => (
+                    {posts.map((item: number) => (
                         <div key={item} className="p-4 space-y-2.5">
                             <div className="flex gap-2 items-center">
                                 <Avatar src={session?.user?.image as string} />
