@@ -16,11 +16,12 @@ services:
         container_name: api
         build: ./api
         restart: always
+        command: yarn start
         ports:
             - "4200:3000"
         environment:
-            - MONGO_URI=mongodb://mongodb:27017
-            - PORT=4000
+            - MONGODB_CONNECT_STRING=mongodb://mongodb:27017/
+            - PORT=3000
         networks:
             - external_network
         depends_on:
@@ -30,6 +31,7 @@ services:
         container_name: web
         build: ./web
         restart: always
+        command: yarn start
         ports:
             - "4400:3000"
         environment:
