@@ -9,7 +9,7 @@ export class Account {
   @Prop({ required: true, default: () => nanoid() })
   uid: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   username: string;
 
   @Prop({ required: true })
@@ -18,10 +18,10 @@ export class Account {
   @Prop({ max: 64 })
   name: string;
 
-  @Prop()
+  @Prop({ unique: true })
   email: string;
 
-  @Prop()
+  @Prop({ default: 'https://i.pravatar.cc/300' })
   image: string;
 }
 
