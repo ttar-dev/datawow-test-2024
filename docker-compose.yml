@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+    mongodb:
+        container_name: mongodb
+        image: mongo
+        restart: always
+        # volumes:
+        #     - mongodb_data:/data/db
+        ports:
+            - "27017:27017"
+        networks:
+            - external_network
+
+    api:
+        container_name: api
+        build: ./api
+        restart: always
+        ports:
+            - "4200:3000"
+        environment:
+            - MONGO_URI=mongodb://mongodb:27017
+            - PORT=4000
+        networks:
+            - external_network
+        depends_on:
+            - mongodb
+
+    web:
+        container_name: web
+        build: ./web
+        restart: always
+        ports:
+            - "4400:3000"
+        environment:
+            - NEXT_PUBLIC_API_URL=http://api:4200
+            - NEXTAUTH_SECRET=secret
+            - PORT=3000
+        networks:
+            - external_network
+        depends_on:
+            - api
+
+networks:
+    external_network:
+        external: true
