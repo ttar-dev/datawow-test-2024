@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${fontBranded.variable} ${fontForms.variable}`}>
+            <body
+                className={`${fontBranded.variable} ${fontForms.variable} w-full`}
+            >
                 <AuthProvider>
                     <UIProvider>{children}</UIProvider>
                 </AuthProvider>

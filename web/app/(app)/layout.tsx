@@ -21,7 +21,7 @@ export default function AppLayout({children}: {children: React.ReactNode}) {
                     dolores assumenda repellat praesentium accusamus?
                 </div>
             </aside>
-            <main className="block sm:mt-[60px] sm:ml-[280px] max-w-4xl p-6">
+            <main className="block mt-[60px] sm:ml-[280px] w-full sm:max-w-4xl p-3 sm:p-6">
                 {children}
             </main>
         </>
