@@ -40,7 +40,7 @@ export class PostController {
   ) {
     return await this.postService.updateByPostID({
       post_id,
-      author_id: user.sub,
+      author_id: user.uid,
       updateValues: { title, content, community },
     });
   }
@@ -57,7 +57,7 @@ export class PostController {
       title,
       content,
       community,
-      author_id: user.sub,
+      author_id: user.uid,
     });
   }
 }

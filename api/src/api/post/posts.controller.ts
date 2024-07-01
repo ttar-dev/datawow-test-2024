@@ -19,6 +19,6 @@ export class PostsController {
 
   @Get('/my')
   async getMyPosts(@Req() { user }: { user: any }) {
-    return await this.postService.findAll({ author_id: user.sub });
+    return await this.postService.findAll({ author_id: user.uid });
   }
 }
