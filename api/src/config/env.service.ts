@@ -21,6 +21,14 @@ class ConfigService {
   public getPort() {
     return this.getValue('PORT', true);
   }
+
+  public getMongodbConnectString() {
+    return this.getValue('MONGODB_CONNECT_STRING', true);
+  }
+
+  public getJwtSecret() {
+    return this.getValue('JWT_SECRET', false) || 'secret';
+  }
 }
 
 const configService = new ConfigService(process.env).ensureValues([

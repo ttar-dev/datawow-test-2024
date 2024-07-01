@@ -6,7 +6,7 @@ import { SignInRequestBody } from './dtos/auth.dto';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @Post('login')
+  @Post('signin')
   signIn(@Body() signInDto: SignInRequestBody) {
     return this.authService.signIn(signInDto);
   }
