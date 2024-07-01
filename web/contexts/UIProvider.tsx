@@ -6,7 +6,7 @@ import {NextUIProvider} from "@nextui-org/react";
 export default function UIProvider({children}: {children: React.ReactNode}) {
     return (
         <NextUIProvider>
-            <div className="relative">{children}</div>
+            <div className="relative w-full">{children}</div>
         </NextUIProvider>
     );
 }
