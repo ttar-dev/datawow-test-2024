@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AccountModelType } from './database/account.schema';
-import * as bcrypt from 'bcrypt';
+// import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AccountService {
   constructor(
@@ -26,7 +26,7 @@ export class AccountService {
     name: string;
     email: string;
   }) {
-    const hashedPassword = await bcrypt.hash(values.password, 10);
-    return await this.mgUser.create({ ...values, password: hashedPassword });
+    // const hashedPassword = await bcrypt.hash(values.password, 10);
+    return await this.mgUser.create({ ...values, password: '-' });
   }
 }
