@@ -1,15 +1,14 @@
 "use client";
 import {Controller, useFormContext} from "react-hook-form";
-import {InputProps, Input as NXInput} from "@nextui-org/react";
+import {TextAreaProps, Textarea as NXTextarea} from "@nextui-org/react";
 
-export default function Input({
+export default function Textarea({
     label,
     name,
     placeholder,
     rules,
     isDisabled,
     isReadonly,
-    startContent,
     classNames
 }: {
     label: string;
@@ -18,8 +17,7 @@ export default function Input({
     rules?: any;
     isDisabled?: boolean;
     isReadonly?: boolean;
-    startContent?: InputProps["startContent"];
-    classNames?: InputProps["classNames"];
+    classNames?: TextAreaProps["classNames"];
 }) {
     const form = useFormContext();
     return (
@@ -29,7 +27,7 @@ export default function Input({
                 name={name}
                 rules={rules}
                 render={({field, fieldState: {error, invalid}}) => (
-                    <NXInput
+                    <NXTextarea
                         classNames={{
                             label: "hidden",
                             inputWrapper: `${
@@ -42,7 +40,6 @@ export default function Input({
                         }}
                         radius="sm"
                         fullWidth
-                        startContent={startContent}
                         isDisabled={form.formState.isSubmitting || isDisabled}
                         isReadOnly={isReadonly}
                         isRequired={!!rules?.required}
@@ -51,7 +48,6 @@ export default function Input({
                         errorMessage={error?.message}
                         isInvalid={invalid}
                         onChange={field.onChange}
-                        labelPlacement="outside-left"
                     />
                 )}
             />

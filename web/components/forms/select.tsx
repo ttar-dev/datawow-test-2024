@@ -1,6 +1,6 @@
 "use client";
 
-import {Select as NXSelect, SelectItem} from "@nextui-org/react";
+import {Select as NXSelect, SelectItem, SelectProps} from "@nextui-org/react";
 import {useState} from "react";
 import {Controller, useFormContext} from "react-hook-form";
 
@@ -11,13 +11,17 @@ export default function Select({
     name,
     placeholder,
     rules,
-    options
+    options,
+    variant,
+    color
 }: {
     label: string;
     name: string;
     placeholder?: string;
     rules?: any;
     options: OptionTypes[];
+    variant?: SelectProps["variant"];
+    color?: SelectProps["color"];
 }) {
     const form = useFormContext();
     const [open, setOpen] = useState<boolean>(false);
@@ -27,7 +31,7 @@ export default function Select({
                 control={form.control}
                 name={name}
                 rules={rules}
-                render={() => (
+                render={({field, fieldState: {error, invalid}}) => (
                     <NXSelect
                         label={label}
                         classNames={{
@@ -40,9 +44,18 @@ export default function Select({
                         popoverProps={{
                             backdrop: "blur"
                         }}
+                        onSelectionChange={vals => {
+                            field.onChange(
+                                Array.from(vals).join(", ").replaceAll("_", " ")
+                            );
+                        }}
+                        variant={variant}
+                        color={color}
                         onOpenChange={setOpen}
+                        selectedKeys={[field.value]}
                         labelPlacement="outside-left"
                         placeholder={placeholder}
+                        isInvalid={invalid}
                     >
                         {options.map((option: OptionTypes) => (
                             <SelectItem
