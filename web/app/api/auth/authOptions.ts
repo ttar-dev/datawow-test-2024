@@ -1,6 +1,7 @@
 import {NextAuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import _ from "lodash";
+import axios from "axios";
 
 const authOptions: NextAuthOptions = {
     pages: {
@@ -19,27 +20,29 @@ const authOptions: NextAuthOptions = {
                 username: {label: "Username", type: "text"}
             },
             async authorize(credentials: any) {
-                if (credentials?.username !== "johndoe") {
-                    return null;
-                }
-                const user = {
-                    id: "1",
-                    name: "John Doe",
-                    email: "johndoe@example.com",
-                    image: "https://i.pravatar.cc/300"
-                };
-
-                return user;
+                const {data} = await axios.post(
+                    process.env.NEXT_PUBLIC_API_URL + "/auth/signin",
+                    {
+                        username: credentials.username
+                    }
+                );
+                return data;
             }
         })
     ],
     callbacks: {
         async jwt(cb: any) {
-            const {token} = cb;
-
-            if (token.email === "johndoe@example.com") {
-                return token;
+            const {token, user} = cb;
+            if (user) {
+                token.access_token = user.access_token;
+                token.token_type = user.token_type;
+                token.expires_in = user.expires_at;
+                token.uid = user.uid;
+                token.email = user.email;
+                token.name = user.name;
             }
+
+            return token;
         },
 
         async session(cb: any) {
